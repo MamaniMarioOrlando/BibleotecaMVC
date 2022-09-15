@@ -1,0 +1,90 @@
+﻿@model IEnumerable<BibleotecaMVC.Models.Libro>
+@{
+    ViewData["Title"] = "Libro Page";
+
+}
+
+<div class="container">
+    @{
+        if(User.IsInRole("SuperAdmin") || User.IsInRole("Admin"))
+        {
+                <div class="card">
+                    <div class="row card-body">
+                        <h5 class="card-title col-8">¿Desea agregar un libro?</h5>
+                        <a asp-action="Guardar" asp-controller="Libro" class="col-2 btn btn-primary">Agregar</a>
+                    </div>
+                </div>
+        }
+    }
+    @if(Model.Count() > 0){
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">@Html.DisplayNameFor(m => m.IdLibro)</th>
+                    <th scope="col">@Html.DisplayNameFor(m => m.Titulo)</th>
+                    <th scope="col">@Html.DisplayNameFor(m => m.Autor)</th>
+                    <th scope="col">@Html.DisplayNameFor(m => m.Genero)</th>
+                    <th scope="col">@Html.DisplayNameFor(m => m.FechaIngreso)</th>
+                    <th scope="col">@Html.DisplayNameFor(m => m.FechaPublicacion)</th>
+                    @{
+                        if (User.IsInRole("SuperAdmin") || User.IsInRole("Admin"))
+                        {
+                            <th scope="col">Accion</th>
+                        }
+                    }
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                         <td>@item.IdLibro</td>
+                         <td>@item.Titulo</td>
+                         <td>@item.Autor</td>
+                         <td>@item.Genero</td>
+                         <td>@item.FechaIngreso</td>
+                         <td>@item.FechaPublicacion.ToString()</td>
+                        @{
+                            if (User.IsInRole("SuperAdmin"))
+                            {
+                                <td>
+                                    <a asp-route-id="@item.IdLibro"
+                                        asp-action="Editar"
+                                        asp-controller="Libro"
+                                        class="btn btn-secondary">
+                                         Editar
+                                    </a>
+
+                                    <a asp-action="Eliminar"
+                                       asp-controller="Libro"
+                                       asp-route-id="@item.IdLibro"
+                                       class="btn btn-danger">
+                                        Eliminar
+                                    </a>
+                                </td>
+                            }
+                            if ( User.IsInRole("Admin"))
+                            {
+                                <td>
+                                    <a asp-route-id="@item.IdLibro"
+                                       asp-action="Editar"
+                                       asp-controller="Libro"
+                                       class="btn btn-secondary">
+                                        Editar
+                                    </a>
+                                </td>
+                            }
+                        }
+                         
+                    </tr>
+                }
+
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <p> No hay Libros aun!</p>
+    }
+
+</div>

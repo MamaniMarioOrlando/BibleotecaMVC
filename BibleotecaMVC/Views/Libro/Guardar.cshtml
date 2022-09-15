@@ -1,0 +1,28 @@
+﻿@model BibleotecaMVC.Models.Libro
+@{
+    ViewData["Title"] = "Guardar";
+}
+<div class="card">
+    <div class="card-body">
+       <form method="post" asp-action="Guardar" asp-controller="Libro">
+            <div class="mb-3 form-group">
+                <label  asp-for="Titulo" class="form-label">Titulo</label>
+                <input asp-for="Titulo" type="text" placeholder="Piratas del caribe" class="form-control">
+            </div>
+            <div class="mb-3 form-group">
+                <label  asp-for="Autor" class="form-label">Autor del libro</label>
+                <input asp-for="Autor" type="text" placeholder="Rob Kidd" class="form-control">
+            </div>
+            <div class="mb-3 form-group">
+                <label asp-for="Genero" class="form-label">Genero del libro</label>
+                <input asp-for="Genero" type="text" placeholder="Aventura" class="form-control">
+            </div>
+            <div class="col_one_third col_last c-azul">
+                <label asp-for="FechaPublicacion">Fecha de Publicacion<small></small></label>
+                <input asp-for="FechaPublicacion" type="date" name="nacimiento" class="sm-form-control">
+            </div>
+  
+            <button type="submit"  class="btn btn-primary">Guardar</button>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,34 @@
+﻿@model BibleotecaMVC.Models.Libro
+@{
+    ViewData["Title"] = "Eliminar";
+}
+
+<div class="card">
+    <div class="card-body">
+        <form method="post" asp-action="Eliminar" asp-controller="Libro">
+             <input type="hidden" asp-for="IdLibro" />
+            <fieldset disabled>
+
+            <div class="mb-3 form-group">
+                <label for="disabledTextInput" asp-for="Titulo" class="form-label">Titulo</label>
+                <input asp-for="Titulo" id="disabledTextInput" type="text" placeholder="Piratas del caribe" class="form-control">
+            </div>
+            <div class="mb-3 form-group">
+                <label for="disabledTextInput" asp-for="Autor" class="form-label">Autor del libro</label>
+                <input asp-for="Autor" id="disabledTextInput" type="text" placeholder="Rob Kidd" class="form-control">
+            </div>
+            <div class="mb-3 form-group">
+                <label for="disabledTextInput" asp-for="Genero" class="form-label">Genero del libro</label>
+                <input asp-for="Genero" id="disabledTextInput" type="text" placeholder="Aventura" class="form-control">
+            </div>
+            <div class="col_one_third col_last c-azul">
+                <label for="disabledTextInput" asp-for="FechaPublicacion">Fecha de Publicacion<small></small></label>
+                <input asp-for="FechaPublicacion" id="disabledTextInput" type="date" class="sm-form-control">
+            </div>
+            </fieldset>
+
+            <button type="submit" class="btn btn-primary">Eliminar</button>
+
+        </form>
+    </div>
+</div>

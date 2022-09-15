@@ -1,0 +1,28 @@
+﻿body {
+    background-image: url("https://cdn.pixabay.com/photo/2015/07/27/20/16/book-863418_960_720.jpg");
+    background-position: center center;
+}
+
+
+.mCuenta {
+    text-align: center;
+    padding: 2rem;
+}
+
+.cardDisplay {
+    width: 20rem;
+    justify-content: center;
+    align-items: center;
+    height: 19rem;
+}
+
+.abs-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btnCenter {
+    display: flex;
+    justify-content: center;
+}

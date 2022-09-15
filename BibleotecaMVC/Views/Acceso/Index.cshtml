@@ -1,0 +1,40 @@
+﻿@model Usuario
+
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - BibleotecaMVC</title>
+    <link rel="stylesheet" href="~/css/regitro.css" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+
+</head>
+<body>
+    <div class="conteiner">
+        <h2 class="mCuenta">Mi cuenta</h2>
+        <div class="abs-center">
+            <div class="card cardDisplay" style="width: 18rem;">
+                <form method="post" asp-action="Index" asp-controller="Acceso" >
+                    <div class="mb-3">
+                        <label for="exampleInputEmail1" class="form-label">Email address</label>
+                        <input asp-for="Email" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputPassword1" class="form-label">Password</label>
+                        <input asp-for="Contrasenia"  type="password" class="form-control" id="exampleInputPassword1">
+                    </div>
+                    <div class="btnCenter">
+                    <button type="submit" class="btn btn-primary">Iniciar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
