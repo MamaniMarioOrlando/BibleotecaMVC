@@ -1,4 +1,4 @@
-﻿@model BibleotecaMVC.Models.Libro
+﻿@model BibleotecaMVC.ModelsDTO.LibroDTO
 @{
     ViewData["Title"] = "Editar";
 }
@@ -23,6 +23,7 @@
                 <label asp-for="FechaPublicacion">Fecha de Publicacion<small></small></label>
                 <input asp-for="FechaPublicacion" type="date"  class="sm-form-control">
             </div>
+            <input type="hidden" asp-for="FechaIngreso" />
 
             <button  asp-action="index" class="btn btn-primary">volver</button>
             <button  type="submit" class="btn btn-primary">Guardar</button>

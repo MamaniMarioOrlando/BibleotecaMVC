@@ -10,6 +10,7 @@
 }
 
 .cardDisplay {
+    background: rgba(240,157,43,0.5);
     width: 20rem;
     justify-content: center;
     align-items: center;
@@ -26,3 +27,17 @@
     display: flex;
     justify-content: center;
 }
+.form-control:focus {
+    color: #E1D7C3;
+    background-color: #553A05;
+    border-color: #ECA417;
+    outline: 0;
+    box-shadow: 0 0 0 .25rem rgba(183, 127, 17, 0.89);
+}
+.inputControl {
+    color: #fff;
+    background-color: #b36f0e;
+    background-clip: padding-box;
+    border: 1px solid #4a2000;
+}
+

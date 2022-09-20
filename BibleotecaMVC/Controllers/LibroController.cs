@@ -1,5 +1,6 @@
 ﻿using BibleotecaMVC.Context;
 using BibleotecaMVC.Models;
+using BibleotecaMVC.ModelsDTO;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -18,6 +19,7 @@ namespace BibleotecaMVC.Controllers
         [Authorize(Roles ="SuperAdmin,Admin,User")]
         public IActionResult Index()
         {
+
             IEnumerable<Libro> listaLibros = _context.Libros;
                 
             return View(listaLibros);
@@ -34,7 +36,8 @@ namespace BibleotecaMVC.Controllers
             if (ModelState.IsValid) 
             {
                 libro.FechaIngreso = DateTime.Now;
-                var libros=_context.Libros;
+                
+                var libros=_context.Libros; 
                 libros.Add(libro);
                 _context.SaveChanges();
                 return RedirectToAction("Index");
@@ -52,23 +55,24 @@ namespace BibleotecaMVC.Controllers
             else 
             {
                 var libros = _context.Libros.Find(id);
+                var libroDTO = new LibroDTO(libros);
                 if (libros==null)
                 {
                     return NotFound("El Libro no existe");
                 }
-                return View(libros);
+                return View(libroDTO);
             }
         }
 
         [HttpPost]
-        public IActionResult Editar(Libro libro) 
+        public async Task<IActionResult> Editar(LibroDTO libro) 
         {
             if (ModelState.IsValid)
             {
-                libro.FechaIngreso = DateTime.Now;
                 var libros = _context.Libros;
-                libros.Update(libro);
-                _context.SaveChanges();
+                Libro libroDto = new Libro(libro);
+                libros.Update(libroDto);
+                await _context.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
             return View();
